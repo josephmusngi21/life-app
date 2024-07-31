@@ -37,6 +37,16 @@ class Calender {
     return this.firstDay;
   };
 
+  addNote(day, note) {
+    //TODO This will add a note using the Date class and a day to choose a specific day for the note
+    this.date.addNote(note);
+  }
+
+  viewNote(day) {
+    //TODO This will view the note from a given date
+    this.date.getNote();
+  }
+
   createCalender() {
 
   };
