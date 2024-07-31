@@ -1,6 +1,8 @@
-class Date {
+class Dates {
   constructor() {
     this.notes = {};
+    this.today = new Date();
+
   }
 
   addNote(date, note) {
@@ -8,30 +10,38 @@ class Date {
   }
 
   getNote(date) {
+    return this.notes[date];
+  }
+
+  printNote(date) {
     return `Note: ${this.notes[date]}`;
-    // return this.notes[date];
   }
 
   deleteNote(date) {
     delete this.notes[date];
   }
 
-  getCurrentDate() {
-    let today = new Date();
-    let dd = String(today.getDate()).padStart(2, '0');
-    let mm = String(today.getMonth() + 1).padStart(2, '0');
-    let yyyy = today.getFullYear();
+  getMonth() {
+    return String(this.today.getMonth() + 1).padStart(2, '0');
+  }
 
-    today = mm + '/' + dd + '/' + yyyy;
-    return today;
+  getDate() {
+    return String(this.today.getDate()).padStart(2, '0');
+
+  }
+
+  getYear() {
+    return String(this.today.getFullYear());
+  }
+
+  getCurrentDate() {
+    let dd = String(this.today.getDate()).padStart(2, '0');
+    let mm = String(this.today.getMonth() + 1).padStart(2, '0');
+    let yyyy = String(this.today.getFullYear());
+
+    this.today = mm + '/' + dd + '/' + yyyy;
+    return this.today;
   }
 }
 
-// let today = new Calender();
-// let currentDate = today.getCurrentDate();
-// console.log(today.addNote(currentDate, 'hello'));
-
-// console.log((today.getNote(currentDate)));
-
-export default Date;
-
+module.exports = Dates;
