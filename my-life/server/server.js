@@ -1,6 +1,5 @@
 const express = require("express");
 const mysql = require("mysql");
-// const bcrypt = require("bcrypt");
 
 const cors = require("cors");
 const bodyParser = require("body-parser");
@@ -11,8 +10,6 @@ app.use(bodyParser.json());
 
 // Define  database name
 const dbName = "notes";
-
-// const saltRounds = 10;
 
 let db = mysql.createConnection({
   host: "localhost",
@@ -46,7 +43,7 @@ db.connect((err) => {
   }
 
   let sql =
-    "CREATE TABLE IF NOT EXISTS notes(id int AUTO_INCREMENT, note TEXT, date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY(id))";
+    "CREATE TABLE IF NOT EXISTS notes(id int AUTO_INCREMENT, note TEXT, date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP, subject VARCHAR(255), PRIMARY KEY(id))";
   db.query(sql, (err, result) => {
     if (err) console.log(err);
     console.log(result);
@@ -56,7 +53,7 @@ db.connect((err) => {
 
 // Insert note
 app.post("/addnote", (req, res) => {
-  let note = { note: req.body.note };
+  let note = { note: req.body.note, subject: req.body.subject };
   let sql = "INSERT INTO notes SET ?";
   let query = db.query(sql, note, (err, result) => {
     if (err) console.log(err);
