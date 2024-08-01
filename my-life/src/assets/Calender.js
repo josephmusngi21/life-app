@@ -8,18 +8,18 @@ class Calender {
     this.leapYear = this.getYear % 4 === 0;
 
     this.months = {
-      "01": ["January", 31],
-      "02": ["February", this.leapYear ? 29 : 28],
-      "03": ["March", 31],
-      "04": ["April", 30],
-      "05": ["May", 31],
-      "06": ["June", 30],
-      "07": ["July", 31],
-      "08": ["August", 31],
-      "09": ["September", 30],
-      '10': ["October", 31],
-      '11': ["November", 30],
-      '12': ["December", 31],
+      1: ["January", 31],
+      2: ["February", this.leapYear ? 29 : 28],
+      3: ["March", 31],
+      4: ["April", 30],
+      5: ["May", 31],
+      6: ["June", 30],
+      7: ["July", 31],
+      8: ["August", 31],
+      9: ["September", 30],
+      10: ["October", 31],
+      11: ["November", 30],
+      12: ["December", 31],
     };
 
     this.days = {
@@ -47,14 +47,34 @@ class Calender {
     this.date.getNote();
   }
 
-  createCalender() {
-
+  createCurrentCalender() {
+    let month = this.months[String(this.date.getMonth() + 1)];
+    let day = 1;
+    let output = '       ' + month[0] + '\n';
+    output += 'M  T  W  TH F SA SU\n';
+  
+    // Adjust for the first day of the week
+    for (let i = 0; i < this.firstDay; i++) {
+      output += '   ';
+    }
+  
+    while (day <= month[1]) {
+      for (let i = this.firstDay; i < 7 && day <= month[1]; i++) {
+        output += (day < 10 ? '0' : '') + day + ' ';
+        day++;
+      }
+      this.firstDay = 0;
+      output += '\n';
+    }
+  
+    return output;
   };
-}
-
-
+  
+};
 const today = new Calender();
+console.log(today.createCurrentCalender());
 
-console.log(today.date.getDay());
 // console.log(today.returnDay());
 // console.log(today.getMonth());
+
+
