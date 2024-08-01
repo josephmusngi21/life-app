@@ -3,6 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 100vh; /* Make the container take up the full height of the viewport */
 }
 
 .nav {
@@ -29,4 +30,13 @@
     font-weight: bolder;
     width: 63px;
     text-align: center;
+}
+
+.days {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1; /* Allow the days section to grow and take up remaining space */
+    width: 100%;
+    background: blue;
 }
