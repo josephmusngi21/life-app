@@ -2,7 +2,7 @@ const Dates_ = require("./Date.js");
 
 class Calender {
   constructor() {
-    this.date = new Dates_();
+    this.date = new Date();
     this.Calender = {};
     this.firstDay = new Date().getDay();
     this.leapYear = this.getYear % 4 === 0;
@@ -22,19 +22,6 @@ class Calender {
       12: ["December", 31],
     };
 
-    this.days = {
-      "00": "Sunday",
-      "01": "Monday",
-      "02": "Tuesday",
-      "03": "Wednesday",
-      "04": "Thursday",
-      "05": "Friday",
-      "06": "Saturday",
-    };
-  }
-
-  returnDay() {
-    return this.firstDay;
   }
 
   addNote(date, note) {
@@ -49,8 +36,6 @@ class Calender {
 
   createCalender(setMonth = String(this.date.getMonth() + 1)) {
     let month = this.months[String(setMonth)];
-    console.log(month);
-    console.log(month[0]);
     let day = 1;
     let output = "       " + month[0] + "\n";
     output += "Su M  T  W  Th F  Sa\n";
@@ -73,4 +58,7 @@ class Calender {
   }
 }
 
-export default Calender;
+let cal = new Calender();
+
+console.log(cal.createCalender());
+console.log(cal.createCalender(5));
