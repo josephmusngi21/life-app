@@ -29,7 +29,10 @@ function Calender() {
   return (
     <div className={Styles.container}>
       <nav className={Styles.nav}>
-        <button className={Styles.button} onClick={goBack}>
+        <button
+          className={`${Styles.button} ${currentMonth <= 1 ? Styles.hidden : ""}`}
+          onClick={goBack}
+        >
           {"<"}
         </button>
         <p className={Styles.month}>
@@ -37,7 +40,10 @@ function Calender() {
             month: "long",
           })}
         </p>
-        <button className={Styles.button} onClick={goForward}>
+        <button
+          className={`${Styles.button} ${currentMonth >= 12 ? Styles.hidden : ""}`}
+          onClick={goForward}
+        >
           {">"}
         </button>
       </nav>
