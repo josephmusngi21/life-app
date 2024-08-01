@@ -1,45 +1,47 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Styles from "./Calender.module.css";
-const Date = require("./Date.js");
+import Day from "./Day/Day";
 
 function Calender() {
-  let currentDate = new Date();
-  var month = {
-    "01": "January",
-    "02": "February",
-    "03": "March",
-    "04": "April",
-    "05": "May",
-    "06": "June",
-    "07": "July",
-    "08": "August",
-    "09": "September",
-    10: "October",
-    11: "November",
-    12: "December",
+  const CalenderClass = require("../../../assets/Calender");
+  const [currentMonth, setCurrentMonth] = useState(new Date().getMonth() + 1);
+  const [calendarOutput, setCalendarOutput] = useState("");
+
+  const [showNotes, setShowNotes] = useState(null);
+
+  useEffect(() => {
+    const calenderInstance = new CalenderClass();
+    setCalendarOutput(calenderInstance.createCalender(currentMonth));
+  }, [currentMonth]);
+
+  const goBack = () => {
+    if (currentMonth > 1) {
+      setCurrentMonth(currentMonth - 1);
+    }
   };
 
-  var days = {
-    "01": "Monday",
-    "02": "Tuesday",
-    "03": "Wednesday",
-    "04": "Thursday",
-    "05": "Friday",
-    "06": "Saturday",
-    "07": "Sunday",
+  const goForward = () => {
+    if (currentMonth < 12) {
+      setCurrentMonth(currentMonth + 1);
+    }
   };
 
   return (
-    <div>
-      <nav>
-        <h1 className={Styles.leftArrow}>{"<"}</h1>
-        <h1>{month[currentDate.month]}</h1>
-        <h1 className={Styles.rightArrow}>{">"}</h1>
+    <div className={Styles.container}>
+      <nav className={Styles.nav}>
+        <button className={Styles.button} onClick={goBack}>
+          {"<"}
+        </button>
+        <p className={Styles.month}>
+          {new Date(2024, currentMonth - 1).toLocaleString("default", {
+            month: "long",
+          })}
+        </p>
+        <button className={Styles.button} onClick={goForward}>
+          {">"}
+        </button>
       </nav>
-
-      <div className={Styles.days}>
-        
-      </div>
+      <pre className={Styles.days}>{calendarOutput}</pre>
     </div>
   );
 }

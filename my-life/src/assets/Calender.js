@@ -4,8 +4,8 @@ class Calender {
   constructor() {
     this.date = new Date();
     this.Calender = {};
-    this.firstDay = new Date().getDay();
-    this.leapYear = this.getYear % 4 === 0;
+    this.firstDay = new Date(this.date.getFullYear(), this.date.getMonth(), 1).getDay();
+    this.leapYear = this.date.getFullYear() % 4 === 0;
 
     this.months = {
       1: ["January", 31],
@@ -21,36 +21,26 @@ class Calender {
       11: ["November", 30],
       12: ["December", 31],
     };
-
   }
 
-  addNote(date, note) {
-    this.date.addNote(date, note);
-  }
-
-  viewNote(date) {
-    return this.date.printNote(date);
-  }
-
-  viewMonthNote(month) {}
-
-  createCalender(setMonth = String(this.date.getMonth() + 1)) {
-    let month = this.months[String(setMonth)];
+  createCalender(setMonth) {
+    let month = this.months[setMonth];
     let day = 1;
     let output = "       " + month[0] + "\n";
     output += "Su M  T  W  Th F  Sa\n";
 
-    for (let i = 0; i < this.firstDay; i++) {
+    let firstDay = new Date(this.date.getFullYear(), setMonth - 1, 1).getDay();
+
+    for (let i = 0; i < firstDay; i++) {
       output += "   ";
     }
-    console.log(`Month: ${month[0]}, First Day: ${this.firstDay}`);
 
     while (day <= month[1]) {
-      for (let i = this.firstDay; i < 7 && day <= month[1]; i++) {
+      for (let i = firstDay; i < 7 && day <= month[1]; i++) {
         output += (day < 10 ? "0" : "") + day + " ";
         day++;
       }
-      this.firstDay = 0;
+      firstDay = 0;
       output += "\n";
     }
 
@@ -58,7 +48,7 @@ class Calender {
   }
 }
 
-let cal = new Calender();
+module.exports = Calender;
 
-console.log(cal.createCalender());
-console.log(cal.createCalender(5));
+let c = new Calender();
+console.log(c.createCalender(8));
