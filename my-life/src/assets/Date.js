@@ -2,11 +2,22 @@ class Dates {
   constructor() {
     this.notes = {};
     this.today = new Date();
-
+    this.nextNoteId = 1;
   }
 
   addNote(date, note) {
-    this.notes[date] = note;
+    if (this.notes[date]) {
+      this.notes[date].push({ id: this.nextNoteId++, note });
+    } else {
+      this.notes[date] = [{ id: this.nextNoteId++, note }];
+    }
+  }
+
+  deleteNote(date, id) {
+    let noteIndex = this.notes[date].findIndex((note) => note.id === id);
+    if (noteIndex !== -1) {
+      this.notes[date].splice(noteIndex, 1);
+    }
   }
 
   getNote(date) {
@@ -17,17 +28,12 @@ class Dates {
     return `Note: ${this.notes[date]}`;
   }
 
-  deleteNote(date) {
-    delete this.notes[date];
-  }
-
   getMonth() {
-    return String(this.today.getMonth() + 1).padStart(2, '0');
+    return String(this.today.getMonth() + 1).padStart(2, "0");
   }
 
   getDate() {
-    return String(this.today.getDate()).padStart(2, '0');
-
+    return String(this.today.getDate()).padStart(2, "0");
   }
 
   getYear() {
@@ -35,11 +41,11 @@ class Dates {
   }
 
   getCurrentDate() {
-    let dd = String(this.today.getDate()).padStart(2, '0');
-    let mm = String(this.today.getMonth() + 1).padStart(2, '0');
+    let dd = String(this.today.getDate()).padStart(2, "0");
+    let mm = String(this.today.getMonth() + 1).padStart(2, "0");
     let yyyy = String(this.today.getFullYear());
 
-    this.today = mm + '/' + dd + '/' + yyyy;
+    this.today = mm + "/" + dd + "/" + yyyy;
     return this.today;
   }
 }
