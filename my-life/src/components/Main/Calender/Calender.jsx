@@ -50,9 +50,6 @@ function Calender() {
           {">"}
         </button>
       </nav>
-      <p className={Styles.days}>
-        {}
-      </p>
       <pre className={Styles.days}>{calendarOutput}</pre>
     </div>
   );

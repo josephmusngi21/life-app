@@ -51,7 +51,6 @@ class Calender {
     return output;
   }
 
-<<<<<<< HEAD
 //   calenderToList(setMonth) {
 //     let month = this.months[setMonth];
 //     let day = 1;
@@ -79,39 +78,10 @@ class Calender {
 
 //     return calendar;
 //   }
-=======
-  calenderToList(setMonth) {
-    let month = this.months[setMonth];
-    let day = 1;
-    let firstDay = new Date(this.date.getFullYear(), setMonth - 1, 1).getDay();
-    let calendar = [];
-    let week = new Array(7).fill(null);
-
-    for (let i = 0; i < firstDay; i++) {
-      week[i] = null;
-    }
-
-    while (day <= month[1]) {
-      for (let i = firstDay; i < 7 && day <= month[1]; i++) {
-        week[i] = new Dates_(this.date.getFullYear(), setMonth, day);
-        day++;
-      }
-      calendar.push(week);
-      week = new Array(7).fill(null);
-      firstDay = 0;
-    }
-
-    if (week.some(date => date !== null)) {
-      calendar.push(week);
-    }
-
-    return calendar;
-  }
->>>>>>> 8e63474d14b4f35cee2a7cefb7516a32af3b5756
 }
 
 module.exports = Calender;
 
 let c = new Calender();
 console.log(c.createCalender(8));
-console.log(c.calenderToList(8));
+// console.log(c.calenderToList(8));
