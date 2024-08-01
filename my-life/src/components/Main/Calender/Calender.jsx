@@ -8,6 +8,9 @@ function Calender() {
   const [calendarOutput, setCalendarOutput] = useState("");
 
   const [showNotes, setShowNotes] = useState(null);
+//   const listOfDays = new CalenderClass().calenderToList();
+
+//   console.log(listOfDays);
 
   useEffect(() => {
     const calenderInstance = new CalenderClass();

@@ -4,7 +4,11 @@ class Calender {
   constructor() {
     this.date = new Date();
     this.Calender = {};
-    this.firstDay = new Date(this.date.getFullYear(), this.date.getMonth(), 1).getDay();
+    this.firstDay = new Date(
+      this.date.getFullYear(),
+      this.date.getMonth(),
+      1
+    ).getDay();
     this.leapYear = this.date.getFullYear() % 4 === 0;
 
     this.months = {
@@ -26,7 +30,7 @@ class Calender {
   createCalender(setMonth) {
     let month = this.months[setMonth];
     let day = 1;
-    let output = "       " + month[0] + "\n";
+    let output = "";
     output += "Su M  T  W  Th F  Sa\n";
 
     let firstDay = new Date(this.date.getFullYear(), setMonth - 1, 1).getDay();
@@ -46,9 +50,38 @@ class Calender {
 
     return output;
   }
+
+//   calenderToList(setMonth) {
+//     let month = this.months[setMonth];
+//     let day = 1;
+//     let firstDay = new Date(this.date.getFullYear(), setMonth - 1, 1).getDay();
+//     let calendar = [];
+//     let week = new Array(7).fill(null);
+
+//     for (let i = 0; i < firstDay; i++) {
+//       week[i] = null;
+//     }
+
+//     while (day <= month[1]) {
+//       for (let i = firstDay; i < 7 && day <= month[1]; i++) {
+//         week[i] = new Dates_(this.date.getFullYear(), setMonth, day);
+//         day++;
+//       }
+//       calendar.push(week);
+//       week = new Array(7).fill(null);
+//       firstDay = 0;
+//     }
+
+//     if (week.some(date => date !== null)) {
+//       calendar.push(week);
+//     }
+
+//     return calendar;
+//   }
 }
 
 module.exports = Calender;
 
 let c = new Calender();
 console.log(c.createCalender(8));
+console.log(c.calenderToList(8));
