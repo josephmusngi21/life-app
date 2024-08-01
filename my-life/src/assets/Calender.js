@@ -2,7 +2,7 @@ const Dates_ = require("./Date.js");
 
 class Calender {
   constructor() {
-    this.date = new Date();
+    this.date = new Dates_();
     this.Calender = {};
     this.firstDay = new Date().getDay();
     this.leapYear = this.getYear % 4 === 0;
@@ -23,58 +23,54 @@ class Calender {
     };
 
     this.days = {
-      "00": "Monday",
-      "01": "Tuesday",
-      "02": "Wednesday",
-      "03": "Thursday",
-      "04": "Friday",
-      "05": "Saturday",
-      "06": "Sunday",
+      "00": "Sunday",
+      "01": "Monday",
+      "02": "Tuesday",
+      "03": "Wednesday",
+      "04": "Thursday",
+      "05": "Friday",
+      "06": "Saturday",
     };
   }
 
   returnDay() {
     return this.firstDay;
-  };
-
-  addNote(day, note) {
-    //TODO This will add a note using the Date class and a day to choose a specific day for the note
-    this.date.addNote(note);
   }
 
-  viewNote(day) {
-    //TODO This will view the note from a given date
-    this.date.getNote();
+  addNote(date, note) {
+    this.date.addNote(date, note);
   }
 
-  createCurrentCalender() {
-    let month = this.months[String(this.date.getMonth() + 1)];
+  viewNote(date) {
+    return this.date.printNote(date);
+  }
+
+  viewMonthNote(month) {}
+
+  createCalender(setMonth = String(this.date.getMonth() + 1)) {
+    let month = this.months[String(setMonth)];
+    console.log(month);
+    console.log(month[0]);
     let day = 1;
-    let output = '       ' + month[0] + '\n';
-    output += 'M  T  W  TH F SA SU\n';
-  
-    // Adjust for the first day of the week
+    let output = "       " + month[0] + "\n";
+    output += "Su M  T  W  Th F  Sa\n";
+
     for (let i = 0; i < this.firstDay; i++) {
-      output += '   ';
+      output += "   ";
     }
-  
+    console.log(`Month: ${month[0]}, First Day: ${this.firstDay}`);
+
     while (day <= month[1]) {
       for (let i = this.firstDay; i < 7 && day <= month[1]; i++) {
-        output += (day < 10 ? '0' : '') + day + ' ';
+        output += (day < 10 ? "0" : "") + day + " ";
         day++;
       }
       this.firstDay = 0;
-      output += '\n';
+      output += "\n";
     }
-  
+
     return output;
-  };
-  
-};
-const today = new Calender();
-console.log(today.createCurrentCalender());
+  }
+}
 
-// console.log(today.returnDay());
-// console.log(today.getMonth());
-
-
+export default Calender;
