@@ -1,4 +1,4 @@
-/* Calendar.module.css */
+/* Calender.module.css */
 .container {
     display: flex;
     flex-direction: column;
@@ -37,6 +37,10 @@
     gap: 10px;
     width: 100%;
     max-width: 600px;
+}
+
+.week {
+    display: contents;
 }
 
 .day {
