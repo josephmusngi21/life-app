@@ -1,8 +1,9 @@
 class Dates {
-  constructor() {
-    this.notes = {};
+  constructor(notes={}, date) {
+    this.notes = notes;
     this.today = new Date();
     this.nextNoteId = 1;
+    [this.month, this.day, this.year] = date;
   }
 
   addNote(date, note) {

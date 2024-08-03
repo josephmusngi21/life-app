@@ -7,10 +7,10 @@ function Calender() {
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth() + 1);
   const [calendarOutput, setCalendarOutput] = useState("");
 
-  const [showNotes, setShowNotes] = useState(null);
-  const listOfDays = new CalenderClass().calenderToList();
+//   const [showNotes, setShowNotes] = useState(null);
+//   const listOfDays = new CalenderClass().calenderToList();
 
-  console.log(listOfDays);
+//   console.log(listOfDays);
 
   useEffect(() => {
     const calenderInstance = new CalenderClass();
@@ -50,9 +50,6 @@ function Calender() {
           {">"}
         </button>
       </nav>
-      <p className={Styles.days}>
-        {}
-      </p>
       <pre className={Styles.days}>{calendarOutput}</pre>
     </div>
   );
