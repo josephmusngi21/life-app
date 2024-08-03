@@ -1,21 +1,16 @@
 import React, { useEffect, useState } from "react";
-import Styles from "./Calender.module.css";
-import Days from "../Calender/Day/Day";
+import Styles from "../Calender/Calender.module.css";
+import Day from "../../Main/Calender/Day/Day";
+import CalendarClass from "../../../assets/Calender";
 
-function Calender() {
-  const CalenderClass = require("../../../assets/Calender");
+function Calendar() {
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth() + 1);
-  const [calendarOutput, setCalendarOutput] = useState("");
+  const [calendarOutput, setCalendarOutput] = useState([]);
 
-  //   const [showNotes, setShowNotes] = useState(null);
-  //   const listOfDays = new CalenderClass().calenderToList();
-
-  //   console.log(listOfDays);
   useEffect(() => {
-    const calenderInstance = new CalenderClass();
-    // setCalendarOutput(calenderInstance.createCalender(currentMonth));
-    setCalendarOutput(calenderInstance.calendarToList(currentMonth));
-  }, [CalenderClass, currentMonth]);
+    const calendarInstance = new CalendarClass();
+    setCalendarOutput(calendarInstance.calendarToList(currentMonth));
+  }, [currentMonth]);
 
   const goBack = () => {
     if (currentMonth > 1) {
@@ -33,9 +28,7 @@ function Calender() {
     <div className={Styles.container}>
       <nav className={Styles.nav}>
         <button
-          className={`${Styles.button} ${
-            currentMonth <= 1 ? Styles.hidden : ""
-          }`}
+          className={`${Styles.button} ${currentMonth <= 1 ? Styles.hidden : ""}`}
           onClick={goBack}
         >
           {"<"}
@@ -46,21 +39,23 @@ function Calender() {
           })}
         </p>
         <button
-          className={`${Styles.button} ${
-            currentMonth >= 12 ? Styles.hidden : ""
-          }`}
+          className={`${Styles.button} ${currentMonth >= 12 ? Styles.hidden : ""}`}
           onClick={goForward}
         >
           {">"}
         </button>
       </nav>
-      <pre className={Styles.days}>
-        {calendarOutput.map((day, index) => (
-          <Days key={index} day={day} />
+      <div className={Styles.days}>
+        {calendarOutput.map((week, weekIndex) => (
+          <div key={weekIndex} className={Styles.week}>
+            {week.map((day, dayIndex) => (
+              <Day key={dayIndex} day={day} />
+            ))}
+          </div>
         ))}
-      </pre>
+      </div>
     </div>
   );
 }
 
-export default Calender;
+export default Calendar;
