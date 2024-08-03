@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import Styles from "./Calender.module.css";
+import Days from "../Calender/Day/Day";
 
 function Calender() {
   const CalenderClass = require("../../../assets/Calender");
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth() + 1);
   const [calendarOutput, setCalendarOutput] = useState("");
 
-//   const [showNotes, setShowNotes] = useState(null);
-//   const listOfDays = new CalenderClass().calenderToList();
+  //   const [showNotes, setShowNotes] = useState(null);
+  //   const listOfDays = new CalenderClass().calenderToList();
 
-//   console.log(listOfDays);
+  //   console.log(listOfDays);
   useEffect(() => {
     const calenderInstance = new CalenderClass();
     // setCalendarOutput(calenderInstance.createCalender(currentMonth));
@@ -32,7 +33,9 @@ function Calender() {
     <div className={Styles.container}>
       <nav className={Styles.nav}>
         <button
-          className={`${Styles.button} ${currentMonth <= 1 ? Styles.hidden : ""}`}
+          className={`${Styles.button} ${
+            currentMonth <= 1 ? Styles.hidden : ""
+          }`}
           onClick={goBack}
         >
           {"<"}
@@ -43,13 +46,19 @@ function Calender() {
           })}
         </p>
         <button
-          className={`${Styles.button} ${currentMonth >= 12 ? Styles.hidden : ""}`}
+          className={`${Styles.button} ${
+            currentMonth >= 12 ? Styles.hidden : ""
+          }`}
           onClick={goForward}
         >
           {">"}
         </button>
       </nav>
-      <pre className={Styles.days}>{calendarOutput}</pre>
+      <pre className={Styles.days}>
+        {calendarOutput.map((day, index) => (
+          <Days key={index} day={day} />
+        ))}
+      </pre>
     </div>
   );
 }
