@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Styles from "./Calender.module.css";
-import Day from "./Day/Day";
 
 function Calender() {
   const CalenderClass = require("../../../assets/Calender");
@@ -15,7 +14,7 @@ function Calender() {
     const calenderInstance = new CalenderClass();
     // setCalendarOutput(calenderInstance.createCalender(currentMonth));
     setCalendarOutput(calenderInstance.calendarToList(currentMonth));
-  }, [currentMonth]);
+  }, [CalenderClass, currentMonth]);
 
   const goBack = () => {
     if (currentMonth > 1) {
