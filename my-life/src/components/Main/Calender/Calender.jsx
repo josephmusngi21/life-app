@@ -7,14 +7,14 @@ function Calender() {
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth() + 1);
   const [calendarOutput, setCalendarOutput] = useState("");
 
-  const [showNotes, setShowNotes] = useState(null);
+//   const [showNotes, setShowNotes] = useState(null);
 //   const listOfDays = new CalenderClass().calenderToList();
 
 //   console.log(listOfDays);
-
   useEffect(() => {
     const calenderInstance = new CalenderClass();
-    setCalendarOutput(calenderInstance.createCalender(currentMonth));
+    // setCalendarOutput(calenderInstance.createCalender(currentMonth));
+    setCalendarOutput(calenderInstance.calendarToList(currentMonth));
   }, [currentMonth]);
 
   const goBack = () => {

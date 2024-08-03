@@ -49,39 +49,36 @@ class Calender {
     }
 
     return output;
-  }
+  };
 
-//   calenderToList(setMonth) {
-//     let month = this.months[setMonth];
-//     let day = 1;
-//     let firstDay = new Date(this.date.getFullYear(), setMonth - 1, 1).getDay();
-//     let calendar = [];
-//     let week = new Array(7).fill(null);
+  calendarToList(setMonth) {
+    let dayCount = this.months[setMonth][1];
+    console.log(`dayCount: ${dayCount}`);
+    let day = 1;
+    let firstDay = new Date(this.date.getFullYear(), setMonth - 1, 1).getDay();
+    console.log(firstDay);
+    let calendar = [['Su', 'M ', 'T ', 'W ', 'Th', 'F ', 'Sa']];
+    
+    while (day <= dayCount) {
+        let week = [];
+        for (let i = 0; i < 7; i++) {
+            if (day > dayCount) break;
+            if (calendar.length === 1 && i < firstDay) {
+                week.push('   '); 
+            } else {
+                week.push(day.toString().padStart(2, ' '));
+                day++;
+            }
+        }
+        calendar.push(week);
+    }
 
-//     for (let i = 0; i < firstDay; i++) {
-//       week[i] = null;
-//     }
-
-//     while (day <= month[1]) {
-//       for (let i = firstDay; i < 7 && day <= month[1]; i++) {
-//         week[i] = new Dates_(this.date.getFullYear(), setMonth, day);
-//         day++;
-//       }
-//       calendar.push(week);
-//       week = new Array(7).fill(null);
-//       firstDay = 0;
-//     }
-
-//     if (week.some(date => date !== null)) {
-//       calendar.push(week);
-//     }
-
-//     return calendar;
-//   }
+    return calendar;
+}
 }
 
 module.exports = Calender;
 
 let c = new Calender();
-console.log(c.createCalender(8));
-// console.log(c.calenderToList(8));
+// console.log(c.createCalender(8));
+console.log(c.calenderToList(8));
