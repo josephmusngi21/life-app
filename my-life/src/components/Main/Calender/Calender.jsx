@@ -11,10 +11,10 @@ function Calender() {
 //   const listOfDays = new CalenderClass().calenderToList();
 
 //   console.log(listOfDays);
-
   useEffect(() => {
     const calenderInstance = new CalenderClass();
-    setCalendarOutput(calenderInstance.createCalender(currentMonth));
+    // setCalendarOutput(calenderInstance.createCalender(currentMonth));
+    setCalendarOutput(calenderInstance.calendarToList(currentMonth));
   }, [currentMonth]);
 
   const goBack = () => {
