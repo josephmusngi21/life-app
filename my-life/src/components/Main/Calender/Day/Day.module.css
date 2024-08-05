@@ -73,5 +73,6 @@
 }
 
 .day:hover {
-    background: green;
+    background: darkgrey;
+    cursor: pointer;
 }
