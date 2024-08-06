@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import Styles from "./SideNav.module.css";
 import Item from '../NavAsset/Item/Item';
+import { toFormData } from "axios";
 
 function SideNav() {
-  const [upcomingCount, setUpcomingCount] = useState(0);
-  const [todayCount, setTodayCount] = useState(0);
+  const [upcoming, setUpcoming] = useState({});
+  const [today, setToday] = useState({});
 
   const [search, setSearch] = useState("");
   const [tags, setTags] = useState({});
@@ -41,7 +42,9 @@ function SideNav() {
                   <img src="" alt="Upcoming" />
                   <p className="Text">Upcoming</p>
                 </div>
-                <p>{upcomingCount}</p>
+                <p>{upcoming ? 0 : upcoming.length}</p>
+                {/* ! need to make it so that it populates upcoming or make 
+                it so that upcoming grabs everything thats coming in a week, so might need a week variable to store */}
               </div>
             </li>
             <li>
@@ -50,7 +53,8 @@ function SideNav() {
                   <img src="" alt="Today" />
                   <p className="Text">Today</p>
                 </div>
-                <p>{todayCount}</p>
+                <p>{today ? 0 : today.length}</p>
+                {/* ! need to make it so that it moves everything that day from the calender to a object to make it easier to grab and count */}
               </div>
             </li>
             <li>
