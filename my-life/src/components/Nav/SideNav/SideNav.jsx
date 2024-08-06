@@ -1,11 +1,17 @@
 import React, { useState } from "react";
 import Styles from "./SideNav.module.css";
+import Item from '../NavAsset/Item/Item';
 
 function SideNav() {
   const [upcomingCount, setUpcomingCount] = useState(0);
   const [todayCount, setTodayCount] = useState(0);
 
   const [search, setSearch] = useState("");
+  const [tags, setTags] = useState({});
+  const [list, setlist] = useState({});
+
+  // setTags(tags[..., newTag]); ? maybe something like this
+  // setList(tags[..., newList]); ? maybe something like this
 
   const handleChange = (e) => {
     e.prevent.default();
@@ -27,31 +33,35 @@ function SideNav() {
 
       <div className={Styles.content}>
         <div className={Styles.task}>
-          <p>Tasks</p>
+          <p className={Styles.smallFont}>Tasks</p>
           <ul className={Styles.taskOptions}>
             <li>
-              <div>
-                <img src="" alt="" />
-                <p className="Text">Upcoming</p>
-              </div>
-              <p>{upcomingCount}</p>
-            </li>
-            <li>
-              <div>
-                <img src="" alt="" />
-                <p className="Text">Today</p>
-              </div>
-              <p>{todayCount}</p>
-            </li>
-            <li>
-              <div>
-                <img src="" alt="" />
-                <p className="Text">Calendar</p>
+              <div className={Styles.countOption}>
+                <div className={Styles.left}>
+                  <img src="" alt="Upcoming" />
+                  <p className="Text">Upcoming</p>
+                </div>
+                <p>{upcomingCount}</p>
               </div>
             </li>
             <li>
-              <div>
-                <img src="" alt="" />
+              <div className={Styles.countOption}>
+                <div className={Styles.left}>
+                  <img src="" alt="Today" />
+                  <p className="Text">Today</p>
+                </div>
+                <p>{todayCount}</p>
+              </div>
+            </li>
+            <li>
+              <div className={Styles.option}>
+                <img src="" alt="Calender" />
+                <p className="Text">Calender</p>
+              </div>
+            </li>
+            <li>
+              <div className={Styles.option}>
+                <img src="" alt="StickyWall" />
                 <p className="Text">Sticky Wall</p>
               </div>
             </li>
