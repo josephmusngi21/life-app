@@ -1,0 +1,63 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding: 0 40px;
+    height: 100vh;
+    width: 300px;
+    border-right-style: solid;
+    background: lightblue;
+    padding: 30px;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:left;
+    background: lightcoral;
+    height: 80px;
+    margin: 20px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    height: 800px;
+    background: lightcyan;
+}
+
+.task {
+    background: lightpink;
+}
+
+.taskOptions {
+    list-style: none;
+}
+
+/* .font {
+
+} */
+
+/* 
+
+
+.task-options {
+
+}
+
+.text {
+
+}
+
+.list {
+
+}
+
+.tags {
+
+}
+
+.footer {
+
+} */
