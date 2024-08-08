@@ -3,7 +3,9 @@
 // Will allow them to also remove and add from the list, it will export a list of items
 
 class Item {
-
+    constructor(something) {
+        this.something = something
+    }
 }
 
 module.exports = Item;
