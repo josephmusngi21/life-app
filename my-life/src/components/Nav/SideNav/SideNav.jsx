@@ -11,6 +11,9 @@ function SideNav() {
   const [tags, setTags] = useState({});
   const [list, setlist] = useState({});
 
+  const [calenderToggle, setCalenderToggle] = useState(false);
+  //This will toggle calender on and off 
+
   // setTags(tags[..., newTag]); ? maybe something like this
   // setList(tags[..., newList]); ? maybe something like this
 
@@ -73,15 +76,15 @@ function SideNav() {
           {/* Need to have upcoming Count and today Count Working*/}
         </div>
 
-        <div className="Lists">
+        <div className={Styles.lists}>
           {/* This will have all your lists, under the display of the lists you have, you will be able to 'Add New List', next to each list it will also have the number of things to do in that list  */}
           <h4>Lists</h4>
         </div>
 
-        <div className="Tags">
+        <div className={Styles.tags}>
           {/* This will allow you to press a tag and it will show any note with the following tags, next to the tags you will be able to '+Add Tag's */}
-        </div>
         <h4>Tags</h4>
+        </div>
       </div>
 
       <div className="footer">
