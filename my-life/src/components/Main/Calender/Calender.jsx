@@ -3,7 +3,7 @@ import Styles from "../Calender/Calender.module.css";
 import Day from "../../Main/Calender/Day/Day";
 import CalendarClass from "../../../assets/Calender";
 
-function Calender() {
+function Calendar() {
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth() + 1);
   const [calendarOutput, setCalendarOutput] = useState([]);
 
@@ -58,4 +58,4 @@ function Calender() {
   );
 }
 
-export default Calender;
+export default Calendar;

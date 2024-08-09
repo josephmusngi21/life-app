@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Styles from "./SideNav.module.css";
-import Item from '../NavAsset/Item/Item';
+import Unit from "../NavAsset/Unit/Unit";
 import { toFormData } from "axios";
 
 function SideNav() {
@@ -12,13 +12,13 @@ function SideNav() {
   const [list, setlist] = useState({});
 
   const [calenderToggle, setCalenderToggle] = useState(false);
-  //This will toggle calender on and off 
+  //This will toggle calender on and off
 
   // setTags(tags[..., newTag]); ? maybe something like this
   // setList(tags[..., newList]); ? maybe something like this
 
   const handleChange = (e) => {
-    e.prevent.default();
+    e.preventDefault();
   };
 
   return (
@@ -79,11 +79,20 @@ function SideNav() {
         <div className={Styles.lists}>
           {/* This will have all your lists, under the display of the lists you have, you will be able to 'Add New List', next to each list it will also have the number of things to do in that list  */}
           <h4>Lists</h4>
+          <div className={Styles.itemContainer}>
+            <Unit content="Something" />
+            <Unit content="Something" />
+            <Unit content="Add" />
+          </div>
         </div>
 
         <div className={Styles.tags}>
           {/* This will allow you to press a tag and it will show any note with the following tags, next to the tags you will be able to '+Add Tag's */}
-        <h4>Tags</h4>
+          <h4>Tags</h4>
+          <div className={Styles.itemContainer}>
+            <Unit content="Something" />
+            <Unit content="Something" />
+          </div>
         </div>
       </div>
 

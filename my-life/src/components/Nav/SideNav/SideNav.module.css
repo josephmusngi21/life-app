@@ -99,3 +99,7 @@
 .lists:hover, .tags:hover {
     background-color: #C7C8CC;
 }
+
+.itemContainer {
+    display: flex;
+}
